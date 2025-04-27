@@ -1,11 +1,3 @@
-
----
-
-# 📄 2. Backend Repository README (Render one)
-
-> Repo: `S4-advjs-backend`
-
-```markdown
 # Simple SPA Backend - ADV JS Project
 
 This is the **backend** of the Simple SPA project for the Advanced JavaScript course (EPITA).  
