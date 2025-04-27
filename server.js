@@ -6,13 +6,16 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// --- Define CORS options ---
+const corsOptions = {
+  origin: "https://s4-advjs-project.netlify.app",
+  credentials: true
+};
+
 // --- Middlewares ---
-app.use(cors({
-    origin: "https://s4-advjs-project.netlify.app",
-    credentials: true
-  }));
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // handle preflight requests
 app.use(express.json()); 
-app.options('*', cors(corsOptions));
 
 // --- Fake in-memory storage (for demo) ---
 const users = [];
@@ -45,7 +48,6 @@ app.post("/login", (req, res) => {
     return res.status(401).json({ message: "Invalid credentials" });
   }
   
-  // Normally you'd generate a real token here
   res.status(200).json({ 
     token: "fake-jwt-token", 
     name: user.name, 
@@ -53,7 +55,7 @@ app.post("/login", (req, res) => {
   });
 });
 
-// Create Product (protected - but no auth for demo)
+// Create Product
 app.post("/products", (req, res) => {
   const { name, price, description } = req.body;
   if (!name || !price || !description) {
