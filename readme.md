@@ -3,11 +3,11 @@
 This is the **backend** of the Simple SPA project for the Advanced JavaScript course (EPITA).  
 It is built using **Node.js**, **Express.js**, and deployed on **Render**.
 
-## 🌐 Live API Server
+## Live API Server
 
 - Backend (Render): [https://s4-advjs-backend.onrender.com/](https://s4-advjs-backend.onrender.com/)
 
-## 📦 Tech Stack
+## Tech Stack
 
 - Node.js
 - Express.js
@@ -15,7 +15,7 @@ It is built using **Node.js**, **Express.js**, and deployed on **Render**.
 - Dotenv
 - Render (hosting)
 
-## 🧠 Features
+## Features
 
 - User Sign Up
 - User Login (with fake JWT)
@@ -25,7 +25,7 @@ It is built using **Node.js**, **Express.js**, and deployed on **Render**.
 - CORS configured for frontend integration
 - No database (for simplicity — everything is stored temporarily in memory)
 
-## 🛠️ Setup Instructions
+## Setup Instructions
 
 1. Clone the repository:
 
