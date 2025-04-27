@@ -12,6 +12,7 @@ app.use(cors({
     credentials: true
   }));
 app.use(express.json()); 
+app.options('*', cors(corsOptions));
 
 // --- Fake in-memory storage (for demo) ---
 const users = [];
