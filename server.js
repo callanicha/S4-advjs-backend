@@ -6,16 +6,12 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// --- Define CORS options ---
-const corsOptions = {
+// --- Middlewares ---
+app.use(cors({
   origin: "https://s4-advjs-project.netlify.app",
   credentials: true
-};
-
-// --- Middlewares ---
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // handle preflight requests
-app.use(express.json()); 
+}));
+app.use(express.json());
 
 // --- Fake in-memory storage (for demo) ---
 const users = [];
@@ -47,11 +43,12 @@ app.post("/login", (req, res) => {
   if (!user) {
     return res.status(401).json({ message: "Invalid credentials" });
   }
-  
-  res.status(200).json({ 
-    token: "fake-jwt-token", 
-    name: user.name, 
-    email: user.email 
+
+  // Normally you'd generate a real token here
+  res.status(200).json({
+    token: "fake-jwt-token",
+    name: user.name,
+    email: user.email
   });
 });
 
@@ -72,7 +69,7 @@ app.post("/products", (req, res) => {
   res.status(201).json({ message: "Product created", product: newProduct });
 });
 
-// Get all Products
+// Get Products
 app.get("/products", (req, res) => {
   res.status(200).json(products);
 });
